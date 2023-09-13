@@ -6,14 +6,21 @@
  *
  * Return: The calculated hash.
  */
-unsigned long int hash_djb2(const unsigned char *str)
-{
-	unsigned long int hash;
-	int c;
+class HashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [None] * size
 
-	hash = 5381;
-	while ((c = *str++))
-		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+def hash_table_create(size):
+    if size <= 0:
+        return None
+    return HashTable(size)
 
-	return (hash);
-}
+# Example usage:
+# Create a hash table with a size of 10
+my_hash_table = hash_table_create(10)
+if my_hash_table is not None:
+    print("Hash table created successfully.")
+else:
+    print("Failed to create the hash table.")
+
